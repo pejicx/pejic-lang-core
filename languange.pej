@@ -1,0 +1,52 @@
+lang pejic
+
+version 1.0.0
+
+type core
+
+identity PejicLang
+
+ext .pej
+
+encoding utf-8
+linebreak lf
+
+syntax indentation
+structure strict
+whitespace significant
+case sensitive true
+
+mode explicit
+
+execution declarative
+error strict
+sandboxed true
+
+runtime multi-target
+
+targets go
+targets python
+targets typescript
+targets sql
+
+targets c
+targets cpp
+
+targets bash
+targets sh
+
+targets cmd
+
+formats json
+formats yaml
+
+infrastructure docker
+infrastructure kubernetes
+
+protocol rest
+protocol graphql
+protocol websocket
+
+compatibility forward
+
+status stable
