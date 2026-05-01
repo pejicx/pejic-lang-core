@@ -424,3 +424,117 @@ PejicX is the intelligent execution/runtime coordinator of the system.
 - 🔄 Semantic analyzer (type checking)
 - 🔄 Code generation backends
 - 🔄 Runtime optimizer
+
+## 🔀 Pull Request Guidelines
+
+### Before Creating a PR
+
+1. **Branch Naming Convention:**
+   - `feature/*` - New features
+   - `bugfix/*` - Bug fixes
+   - `docs/*` - Documentation updates
+   - `refactor/*` - Code refactoring
+   - `enhance/*` - Enhancements
+
+   Example: `feature/add-analyzer` or `docs/update-readme`
+
+2. **Commit Standards:**
+   - Use clear, descriptive commit messages
+   - Reference issue numbers when applicable
+   - Use present tense: "Add" not "Added"
+
+3. **Code Quality:**
+   - Follow PEP 8 for Python code
+   - Test your changes locally
+   - Ensure no syntax errors
+
+### PR Merge Template
+
+```markdown
+## Description
+Brief description of what this PR accomplishes.
+
+## Type of Change
+- [ ] New feature (non-breaking)
+- [ ] Bug fix (non-breaking)
+- [ ] Documentation update
+- [ ] Code refactoring
+- [ ] Performance improvement
+
+## Related Issue
+Closes #issue_number
+
+## Changes Made
+- Change 1
+- Change 2
+- Change 3
+
+## Testing
+- [ ] Tested locally
+- [ ] No errors or warnings
+- [ ] Verified compatibility with lexer.py / parser.py
+
+## Checklist
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Comments added for complex logic
+- [ ] Documentation updated
+- [ ] No breaking changes
+```
+
+### PR Review & Merge Process
+
+1. **Create Pull Request:**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+   Then create PR on GitHub
+
+2. **Expectations:**
+   - ✅ Automated tests pass
+   - ✅ Code review approval required
+   - ✅ No merge conflicts
+
+3. **Merge Strategy:**
+   - Use "Squash and merge" for feature branches
+   - Use "Create a merge commit" for major releases
+   - Delete branch after merge
+
+### Example PR Creation
+
+```bash
+# Create and switch to feature branch
+git checkout -b feature/add-error-messages
+
+# Make changes
+# ... edit files ...
+
+# Commit changes
+git add .
+git commit -m "Add comprehensive error messages
+
+- Implement detailed error reporting
+- Add error codes for debugging
+- Include error recovery suggestions"
+
+# Push to remote
+git push origin feature/add-error-messages
+
+# Create PR with descriptive title and body
+# On GitHub: Compare & pull request
+```
+
+### Continuous Integration
+
+All PRs must pass:
+- ✅ Python syntax check
+- ✅ Code style validation
+- ✅ Parser functionality tests
+- ✅ Integration tests with lexer
+
+### Contact & Discussion
+
+For questions about PRs or contributions:
+- Open an issue with label `question`
+- Join discussions in PR comments
+- Check existing PRs for similar work
