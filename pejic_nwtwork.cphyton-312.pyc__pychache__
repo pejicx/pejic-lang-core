@@ -1,0 +1,23 @@
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit
+#
+# Author:    pejic <32981538+pejicx@users.noreply.github.com>
+#
+# On branch codespace-upgraded-pancake-6r95pj64p7425j9x
+# Changes to be committed:
+#	new file:   .github/agents/mec.md
+#	modified:   language.pej
+#
+# Untracked files:
+#	.devcontainer/
+#	.env.example
+#	.github/agents/copilot-instructions.md
+#	.github/agents/copilot.instruction.md
+#	.vscode/
+#	__pycache__/
+#	docker-compose.yml
+#	lexer.py
+#	pejic_network.py
+#
