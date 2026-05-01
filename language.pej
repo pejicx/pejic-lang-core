@@ -1,52 +1,177 @@
-lang pejic
+language "PejicLang"
+version "0.1.0"
+description "Strogo strukturirana deterministička NLP-bazirana jezična definicija za PejicLang."
 
-version 1.0.0
+module lexical {
+    token whitespace = /\s+/
+    token comment = /\/\/[^\n]*|\/\*[\s\S]*?\*\//
+    token identifier = /[A-Za-z_][A-Za-z0-9_]*/
+    token integer = /-?\d+/
+    token float = /-?\d+\.\d+/
+    token string = /"((\\.)|[^"\\])*"/
+    token keyword = [
+        "fn", "let", "const", "if", "else", "while", "for", "return",
+        "break", "continue", "true", "false", "null", "struct", "enum",
+        "import", "export", "as", "match"
+    ]
+    token operator = [
+        "+", "-", "*", "/", "%", "==", "!=", "<", ">", "<=", ">=",
+        "&&", "||", "!", "=", "+=", "-=", "*=", "/=", "%="
+    ]
+    token delimiter = [
+        "(", ")", "{", "}", "[", "]", ";", ",", ".", "::"
+    ]
+}
 
-type core
+module syntax {
+    Program = Statement*
+    Statement = Declaration | ExpressionStatement | ControlStatement | Block
+    Declaration = VariableDeclaration | FunctionDeclaration | StructDeclaration | EnumDeclaration | ImportDeclaration | ExportDeclaration
+    VariableDeclaration = ("let" | "const") Identifier TypeAnnotation? "=" Expression ";"
+    FunctionDeclaration = "fn" Identifier "(" ParameterList? ")" ReturnType? Block
+    ParameterList = Parameter ("," Parameter)*
+    Parameter = Identifier TypeAnnotation?
+    TypeAnnotation = ":" TypeExpression
+    ReturnType = "->" TypeExpression
+    StructDeclaration = "struct" Identifier "{" FieldList? "}" ";"
+    FieldList = Field ("," Field)*
+    Field = Identifier ":" TypeExpression
+    EnumDeclaration = "enum" Identifier "{" EnumMemberList? "}" ";"
+    EnumMemberList = EnumMember ("," EnumMember)*
+    EnumMember = Identifier ("=" IntegerLiteral)?
+    ImportDeclaration = "import" StringLiteral ("as" Identifier)? ";"
+    ExportDeclaration = "export" Declaration
+    ExpressionStatement = Expression ";"
+    ControlStatement = IfStatement | WhileStatement | ForStatement | ReturnStatement | BreakStatement | ContinueStatement | MatchStatement
+    IfStatement = "if" "(" Expression ")" Statement ("else" Statement)?
+    WhileStatement = "while" "(" Expression ")" Statement
+    ForStatement = "for" "(" VariableDeclaration? Expression? ";" Expression? ")" Statement
+    ReturnStatement = "return" Expression? ";"
+    BreakStatement = "break" ";"
+    ContinueStatement = "continue" ";"
+    MatchStatement = "match" "(" Expression ")" "{" MatchArm* "}"
+    MatchArm = Pattern "=>" Statement
+    Block = "{" Statement* "}"
+    Expression = AssignmentExpression
+    AssignmentExpression = LogicalOrExpression (AssignmentOperator AssignmentExpression)?
+    AssignmentOperator = "=" | "+=" | "-=" | "*=" | "/=" | "%="
+    LogicalOrExpression = LogicalAndExpression ("||" LogicalAndExpression)*
+    LogicalAndExpression = EqualityExpression ("&&" EqualityExpression)*
+    EqualityExpression = RelationalExpression (("==" | "!=") RelationalExpression)*
+    RelationalExpression = AdditiveExpression (("<" | ">" | "<=" | ">=") AdditiveExpression)*
+    AdditiveExpression = MultiplicativeExpression (("+" | "-") MultiplicativeExpression)*
+    MultiplicativeExpression = UnaryExpression (("*" | "/" | "%") UnaryExpression)*
+    UnaryExpression = ("!" | "-")? PrimaryExpression
+    PrimaryExpression = Literal | Identifier | "(" Expression ")" | FunctionCall | ArrayLiteral | DictionaryLiteral | StructLiteral
+    FunctionCall = Identifier "(" ArgumentList? ")"
+    ArgumentList = Expression ("," Expression)*
+    ArrayLiteral = "[" ExpressionList? "]"
+    DictionaryLiteral = "{" PropertyList? "}"
+    StructLiteral = Identifier "{" PropertyList? "}"
+    PropertyList = Property ("," Property)*
+    Property = Identifier ":" Expression
+    Pattern = Identifier | Literal | "_" | StructPattern | EnumPattern
+    StructPattern = Identifier "{" PatternList? "}"
+    EnumPattern = Identifier | Identifier "(" PatternList? ")"
+    PatternList = Pattern ("," Pattern)*
+    Literal = IntegerLiteral | FloatLiteral | StringLiteral | BooleanLiteral | NullLiteral
+    IntegerLiteral = integer
+    FloatLiteral = float
+    StringLiteral = string
+    BooleanLiteral = "true" | "false"
+    NullLiteral = "null"
+    Identifier = identifier
+    ExpressionList = Expression ("," Expression)*
+}
 
-identity PejicLang
+module typing {
+    rule VariableDeclaration:
+        if kind == "const" then initializer type is fixed
+        inferredType = infer(Expression)
+        if TypeAnnotation exists then enforce inferredType == TypeAnnotation
+        if no TypeAnnotation then variable type = inferredType
+    rule FunctionDeclaration:
+        each parameter must have explicit TypeAnnotation
+        if ReturnType missing then function return type = Void
+        functionType = (parameterTypes) -> returnType
+    rule TypeExpression:
+        BaseType = "Int" | "Float" | "Bool" | "String" | "Null" | Identifier
+        ArrayType = "Array" "<" TypeExpression ">"
+        DictType = "Dict" "<" TypeExpression "," TypeExpression ">"
+        OptionType = "Option" "<" TypeExpression ">"
+        FunctionType = "(" TypeExpressionList? ")" "->" TypeExpression
+    rule ExpressionTyping:
+        integer => Int
+        float => Float
+        string => String
+        true | false => Bool
+        null => Null
+        identifier => lookup in scope
+        "+"|"-"|"*"|"/"| "%" => numeric operands; result Int or Float
+        "==" | "!=" => same comparable types; result Bool
+        "<" | ">" | "<=" | ">=" => numeric or ordered operands; result Bool
+        "&&" | "||" => Bool operands; result Bool
+        "!" => Bool operand; result Bool
+        assignment => left mutable and right type matches left type
+        function call => callee type FunctionType; argument types match parameter types
+        array literal => common element type T; result Array<T>
+        dictionary literal => key type K and value type V; result Dict<K,V>
+        struct literal => field types match declaration
+        match => arms produce same result type; patterns cover discriminated union
+    rule ControlFlow:
+        if condition must be Bool
+        while condition must be Bool
+        for condition if present must be Bool
+        return expression type matches function return type
+        break/continue only valid inside loops
+        match patterns must be exhaustive for enum discriminants when possible
+}
 
-ext .pej
+module semantics {
+    rule ExecutionOrder:
+        evaluate arguments left-to-right
+        evaluate binary operands left-to-right
+        evaluate initializer then condition then body then increment in loops
+    rule Scope:
+        block scope for declarations
+        nested shadowing allowed
+        const bindings immutable after initialization
+        functions and types hoisted within module scope
+    rule FunctionCall:
+        evaluate callee and arguments
+        create new activation record
+        bind parameters to argument values
+        execute body until return or block end
+        return final value or Void
+    rule Assignment:
+        evaluate right-hand side
+        assign validated value to left-hand storage
+    rule ControlFlow:
+        if executes then-branch on true, else-branch on false
+        while checks condition before each iteration
+        for executes initializer, checks condition, body, increment, repeat
+        match evaluates expression once and selects first matching arm
+    rule ErrorHandling:
+        runtime errors are deterministic and explicit
+        type mismatch => compile-time rejection
+        undefined identifier => compile-time error
+        division by zero => runtime error
+        out-of-bounds => runtime error
+        invalid pattern match => runtime error if no arm matches
+    rule BuiltinFunctions:
+        print(value) => side-effect output of string representation
+        len(value) => Int for Array or String
+        range(start, end, step?) => Array<Int>
+        panic(message) => terminates with explicit error
+}
 
-encoding utf-8
-linebreak lf
-
-syntax indentation
-structure strict
-whitespace significant
-case sensitive true
-
-mode explicit
-
-execution declarative
-error strict
-sandboxed true
-
-runtime multi-target
-
-targets go
-targets python
-targets typescript
-targets sql
-
-targets c
-targets cpp
-
-targets bash
-targets sh
-
-targets cmd
-
-formats json
-formats yaml
-
-infrastructure docker
-infrastructure kubernetes
-
-protocol rest
-protocol graphql
-protocol websocket
-
-compatibility forward
-
-status stable
+module metadata {
+    name = "PejicLang"
+    extension = ".pej"
+    deterministic = true
+    modular = true
+    unambiguous = true
+    nlp_oriented = true
+    execution_model = "strict"
+    typing = "static"
+}
