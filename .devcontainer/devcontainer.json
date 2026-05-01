@@ -7,12 +7,52 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-python.vscode-pylance"
-      ]
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
     }
   },
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "mounts": [
+    
+"source=/var/run/docker.sock,target=/var/run/docker.sock,type
+=bind"
+  ],
+  "forwardPorts": [
+    3000,
+    5000,
+    8000,
+    8080,
+    9000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    },
+    "5000": {
+      "label": "Flask/PejicLang API",
+      "onAutoForward": "notify"
+    },
+    "8000": {
+      "label": "HTTP Server",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "HTTP Service",
+      "onAutoForward": "notify"
+    },
+    "9000": {
+      "label": "Custom Service",
+      "onAutoForward": "notify"
+    }
   },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "bash /workspace/.devcontainer/check-
+docker.sh",
   "remoteUser": "vscode"
 }
