@@ -1,0 +1,52 @@
+version: "3.9"
+
+
+services:
+  pejiclang:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    image: pejic-lang-core:dev
+    ports:
+      - "${PEJIC_PORT_APP:-5000}:5000"
+      - "${PEJIC_PORT_API:-8000}:8000"
+    volumes:
+      - .:/workspace:cached
+    working_dir: /workspace
+    command: sleep infinity
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_HOST=${DATABASE_HOST:-pejiclang-db}
+      - DATABASE_PORT=${DATABASE_PORT:-5432}
+      - DATABASE_NAME=${DATABASE_NAME:-pejiclang}
+      - DATABASE_USER=${DATABASE_USER:-pejiclang}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD:-secret}
+    depends_on:
+      - pejiclang-db
+    networks:
+      - pejiclang-net
+
+
+  pejiclang-db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-pejiclang}
+      POSTGRES_USER: ${DATABASE_USER:-pejiclang}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-secret}
+    volumes:
+      - pejiclang-db-data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    networks:
+      - pejiclang-net
+
+
+volumes:
+  pejiclang-db-data:
+
+
+networks:
+  pejiclang-net:
+    driver: bridge
+
