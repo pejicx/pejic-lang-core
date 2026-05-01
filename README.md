@@ -5,7 +5,7 @@ PejicLang (.pej) is a declarative multi-target orchestration language.
 ## Purpose
 Define and control distributed systems across:
 - backend (Go)
-- PejicX (Python runtime layer)
+- PejicX (.pej)
 - frontend (TypeScript)
 - database (SQL)
 - system layer (C/C++)
