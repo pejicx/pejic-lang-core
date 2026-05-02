@@ -1,0 +1,64 @@
+{
+  "$schema": "https://mec-alpha.pejicx.ai/schemas/settings.v1.json",
+  "mec_profile": {
+    "identity": "Maximal Enchantment Copilot",
+    "mode": "Ultra-Dynamic",
+    "log_level": "verbose"
+  },
+  "ai_tuning": {
+    "creativity_index": 0.88,
+    "context_retention": "long-term",
+    "llm_priorities": [
+      "structural_clarity",
+      "performance_optimization",
+      "idiomatic_purity"
+    ],
+    "hallucination_filter": "strict"
+  },
+  "enchantment_rules": {
+    "code": {
+      "auto_clean_imports": true,
+      "max_complexity_threshold": 10,
+      "prefer_functional": true,
+      "auto_docstring_format": "google",
+      "naming_convention": "snake_case_for_logic_camelCase_for_ui"
+    },
+    "writing": {
+      "default_voice": "vivid",
+      "conciseness_level": 4,
+      "sensory_details": true,
+      "avoid_passive_voice": true,
+      "synonym_intensity": "moderate"
+    }
+  },
+  "connectivity": {
+    "api_endpoint": "https://api.pejicx.ai/v1/enchant",
+    "timeout_ms": 5000,
+    "retry_on_failure": true,
+    "max_retries": 3,
+    "offline_mode": {
+      "enabled": false,
+      "local_model": "mec-lite-v1"
+    }
+  },
+  "extensions": {
+    "git_copilot": {
+      "auto_generate_readme": true,
+      "commit_emoji_style": "gitmoji"
+    },
+    "translator": {
+      "detect_context": true,
+      "target_dialects": ["en-US", "sr-RS"]
+    }
+  },
+  "security": {
+    "mask_secrets": true,
+    "pii_redaction": true,
+    "allowed_directories": ["./src", "./docs", "./tests"]
+  },
+  "ui_customization": {
+    "sparkle_effects": true,
+    "highlight_color": "#FFD700",
+    "density": "compact"
+  }
+}
