@@ -1,0 +1,12 @@
+{
+  "ai_tuning": {
+    "creativity_index": 0.88,
+    "logic_safety_buffer": "maximum",
+    "llm_priorities": {
+      "primary": "structural_clarity",
+      "secondary": "performance_optimization",
+      "tertiary": "idiomatic_refinement"
+    },
+    "behavior_mode": "impactful-writing-safe-logic"
+  }
+}
