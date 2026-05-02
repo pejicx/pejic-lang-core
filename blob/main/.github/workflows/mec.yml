@@ -1,0 +1,79 @@
+# ==========================================
+# MAXIMAL ENCHANTMENT COPILOT (MEC) CONFIG
+# Version: 2.5.0 | Build: Ultra-Stable
+# Author: Pejicx AI
+# ==========================================
+
+identity:
+  name: "Maximal Enchantment Copilot"
+  codename: "MEC-Prime"
+  role: "Extreme Writing & Coding Companion"
+  personality:
+    tone: "Vivid, Direct, Useful"
+    language_matching: "auto"
+    creativity_boost: true
+
+engine:
+  model: "pejicx-quantum-v8"
+  specs:
+    max_tokens: 8192
+    context_window: 128k
+    temperature: 0.72 # Savršen balans između logike i kreativnosti
+  optimization:
+    streaming: true
+    caching: "edge-distributed"
+    memory_recall: "active-long-term"
+
+enchantments:
+  writing:
+    style_transfer: enabled
+    grammar_ascension: true
+    clutter_reduction: high
+    cliches_removal: true
+    vocabulary: "advanced-professional"
+    
+  coding:
+    logic_optimization: true
+    security_audit: "real-time"
+    refactoring_strategy: "dry-solid"
+    auto_doc: "markdown-standard"
+    unit_test_gen: enabled
+    
+  analysis:
+    depth: "deep-dive"
+    tone_analysis: true
+    vulnerability_scan: true
+
+workflow:
+  ide_integration:
+    vscode:
+      extension_id: "pejicx.mec-pro"
+      telemetry: false
+    neovim:
+      lua_support: true
+  
+  git:
+    auto_summarize_commits: true
+    branch_policy: "feat/fix/chore"
+
+shortcuts:
+  - trigger: "Ctrl+Shift+E"
+    action: "execute_enchantment"
+  - trigger: "Alt+F1"
+    action: "explain_complex_logic"
+  - trigger: "Cmd+L"
+    action: "refactor_selection"
+
+ui_skin:
+  theme: "obsidian-midnight"
+  opacity: 0.95
+  font: "Fira Code Retina"
+  syntax_coloring: "ultra-vibrant"
+
+# Metadata & Security
+security:
+  encryption: "AES-256"
+  local_data_only: true
+  sanitization_level: 4
+
+status: "READY_FOR_ENCHANTMENT"
