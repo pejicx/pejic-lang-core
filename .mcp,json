@@ -3,3 +3,17 @@ name: my-skill
 description: My skill description
 context: fork
 ---
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "_API_KRY_": "SELF_ADD"
+      }
+    }
+  }
+}
