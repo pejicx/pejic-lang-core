@@ -85,5 +85,11 @@ contents of the README, the contents of any key source files, the list of files 
 - Document any other steps or information that the agent can use to reduce time spent exploring or trying and failing to run bash commands.
 - Finally, explicitly instruct the agent to trust the instructions and only perform a search if the information in the instructions is incomplete or found to be in error.
 </StepsToFollow>
+
+# Start in one repo, then add others (requires full paths)
+copilot
+/add-dir /Users/me/projects/backend-service
+/add-dir /Users/me/projects/shared-libs
+/add-dir /Users/me/projects/documentation
    - Document any errors encountered as well as the steps taken to work-around them.
 
