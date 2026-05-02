@@ -1,57 +1,77 @@
 {
+  "manifest_version": "2.0",
+  "app_id": "com.pejicx.mec",
   "name": "Maximal Enchantment Copilot",
-  "short_name": "MEC",
-  "version": "1.2.0",
-  "description": "Napredni AI pratilac za maksimalno poboljšanje kvaliteta koda i kreativno pisanje.",
-  "author": "Pejicx",
-  "settings": {
-    "core": {
-      "mode": "hybrid",
-      "intelligence_level": "maximal",
-      "language": "sr-RS",
-      "auto_update": true
-    },
-    "enchancements": {
-      "code_analysis": {
-        "depth": "deep",
-        "optimization": true,
-        "security_check": true,
-        "refactor_suggestions": true
-      },
-      "writing_style": {
-        "tone": "professional-yet-vivid",
-        "clutter_removal": true,
-        "vocabulary_expansion": true
-      },
-      "automation": {
-        "suggest_documentation": true,
-        "unit_test_generation": true,
-        "git_commit_messages": true
-      }
-    },
-    "interface": {
-      "theme": "nebula-dark",
-      "font_size": 14,
-      "compact_mode": false,
-      "notifications": "minimal"
+  "alias": "MEC",
+  "engine_specs": {
+    "model": "pejicx-ultra-v4",
+    "processing_mode": "asynchronous",
+    "context_window": "128k",
+    "temperature_profile": "dynamic"
+  },
+  "core_behavior": {
+    "intervention_level": "proactive",
+    "creativity_threshold": 0.85,
+    "logic_strictness": "high",
+    "tone_mapping": {
+      "default": "vivid-minimalist",
+      "technical": "precise-architectural",
+      "creative": "evocative-fluid"
     }
   },
-  "integrations": {
-    "vscode": true,
-    "intellij": true,
-    "git": "enabled",
-    "cloud_sync": {
-      "provider": "MEC-Cloud",
-      "encrypted": true
+  "enchantment_modules": {
+    "code_alchemy": {
+      "enabled": true,
+      "features": [
+        "zero-latency-refactoring",
+        "predictive-debugging",
+        "syntax-optimization",
+        "docstring-magic"
+      ],
+      "target_standards": ["clean-code", "dry-principle", "solid"]
+    },
+    "linguistic_ascension": {
+      "enabled": true,
+      "features": [
+        "semantic-enrichment",
+        "structural-remapping",
+        "tonal-consistency-check",
+        "clutter-elimination"
+      ]
+    },
+    "workflow_acceleration": {
+      "auto_git": {
+        "generate_commits": true,
+        "branch_naming": "conventional"
+      },
+      "boilerplate_suppression": true
     }
   },
-  "shortcuts": {
-    "trigger_enchant": "Ctrl+Shift+E",
-    "quick_fix": "Alt+Enter",
-    "explain_logic": "Ctrl+L"
+  "environment_integration": {
+    "ide_hooks": ["vscode", "neovim", "jetbrains"],
+    "cli_interface": {
+      "enabled": true,
+      "command_prefix": "mec"
+    },
+    "telemetry": {
+      "bi-directional-learning": true,
+      "privacy_mode": "strict-local"
+    }
+  },
+  "shortcuts_map": {
+    "enchant_selection": "Cmd+Shift+M",
+    "analyze_architecture": "Alt+Shift+A",
+    "summon_creative_pivot": "Ctrl+Space"
+  },
+  "ui_preferences": {
+    "interface_style": "glassmorphism",
+    "primary_accent": "#00FFC3",
+    "typography": "JetBrains Mono",
+    "beautify_output": true
   },
   "metadata": {
-    "last_run": "2023-10-27T10:00:00Z",
-    "status": "ready"
+    "status": "Maximum Performance",
+    "deployment_date": "2023-11-01",
+    "license": "Proprietary-Pejicx-Standard"
   }
 }
