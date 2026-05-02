@@ -35,3 +35,6 @@
     "diffEditor.codeLens": true,
     "chat.mcp.discovery.enabled": true
 }
+{
+  "github-enterprise.uri": "https://copilot-api.SUBDOMAIN.ghe.com/mcp"
+}
