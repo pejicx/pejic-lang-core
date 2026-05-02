@@ -1,0 +1,41 @@
+# ==============================================================================
+# .mecrc - GLOBAL MAXIMAL ENCHANTMENT COPILOT CONFIGURATION
+# Location: ~/.mecrc
+# ==============================================================================
+
+# --- [ GLOBAL IDENTITY ] ---
+export MEC_USER="$(whoami)"
+export MEC_HOME="$HOME/.mec"
+export MEC_LOG_LEVEL="INFO" # Options: DEBUG, INFO, WARN, ERROR
+
+# --- [ ENGINE PREFERENCES ] ---
+# Defines the default AI brain for every terminal session
+export MEC_DEFAULT_MODEL="pejicx-ultra-v4"
+export MEC_MAX_TOKENS=4096
+export MEC_AUTO_ENCHANT="true" # Auto-suggest improvements on save
+
+# --- [ ALIASES ] ---
+# Quick commands to interact with MEC
+alias me='mec enchant'           # Usage: me filename.py
+alias ms='mec status'            # Check if MEC is alive
+alias mlog='tail -f $MEC_HOME/logs/latest.log'
+alias mconf='nano ~/.mecrc'      # Quick edit this config
+
+# --- [ PATHS & INTEGRATIONS ] ---
+# Ensure MEC binaries are in your system PATH
+if [ -d "$MEC_HOME/bin" ]; then
+    export PATH="$MEC_HOME/bin:$PATH"
+fi
+
+# --- [ BEHAVIORAL OVERRIDES ] ---
+# 0 = Creative/Vivid | 1 = Balanced | 2 = Precision/Logic
+export MEC_STRICTNESS=1
+
+# --- [ COLOR THEMES ] ---
+# Defines the Terminal Output Look
+export MEC_THEME="nebula-dark"
+export MEC_PROMPT_PREFIX="✨ [MEC] > "
+
+# --- [ AUTO-LOAD ] ---
+# This part triggers when the terminal opens
+echo -e "\033[0;36mMaximal Enchantment Copilot activated for $MEC_USER.\033[0m"
