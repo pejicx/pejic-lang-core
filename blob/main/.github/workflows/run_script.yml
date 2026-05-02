@@ -1,0 +1,6 @@
+#!/bin/bash
+set -x  # Enable bash debug mode
+INPUT=$(cat)
+echo "DEBUG: Received input" >&2
+echo "$INPUT" >&2
+# ... rest of script
