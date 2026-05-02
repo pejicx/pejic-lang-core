@@ -67,6 +67,21 @@ contents of the README, the contents of any key source files, the list of files 
    - Document the command or information in detail.
    - Explicitly indicate which commands work and which do not and the order in which commands should be run.
    - Document any errors encountered as well as the steps taken to workaround them.
+
+   ## Build Commands
+- `npm run build` - Build the project
+- `npm run test` - Run all tests
+- `npm run lint:fix` - Fix linting issues
+
+## Code Style
+- Use TypeScript strict mode
+- Prefer functional components over class components
+- Always add JSDoc comments for public APIs
+
+## Workflow
+- Run `npm run lint:fix && npm test` after making changes
+- Commit messages follow conventional commits format
+- Create feature branches from `main`
 - Document any other steps or information that the agent can use to reduce time spent exploring or trying and failing to run bash commands.
 - Finally, explicitly instruct the agent to trust the instructions and only perform a search if the information in the instructions is incomplete or found to be in error.
 </StepsToFollow>
