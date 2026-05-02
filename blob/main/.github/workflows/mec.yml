@@ -72,7 +72,6 @@ ui_skin:
 
 # Metadata & Security
 security:
-  encryption: "AES-256"
   local_data_only: true
   sanitization_level: 4
 
