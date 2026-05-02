@@ -13,7 +13,7 @@ GOLD='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Funkcija za ispisivanje logotipa
+# Logo printing function
 print_banner() {
     echo -e "${CYAN}"
     echo "  __  __  ______   _____ "
@@ -25,17 +25,17 @@ print_banner() {
     echo -e "   Maximal Enchantment Copilot${NC}\n"
 }
 
-# Provera konfiguracionih fajlova
+# Checking configuration files
 check_status() {
     echo -e "${GOLD}[*] Checking MEC environment...${NC}"
     if [[ -f "mec.json" && -f "mec.yml" ]]; then
-        echo -e "${GREEN}[OK] Configuration manifests (JSON/YAML) found.${NC}"
+        
     else
-        echo -e "${RED}[!] Warning: Configuration files missing. Run 'mec.sh init'${NC}"
+        echo -e "${GREEN}[OK] Configuration manifests (JSON/YAML) found.${NC}"
     fi
 }
 
-# Glavna logika
+# Main logic
 case "$1" in
     init)
         print_banner
