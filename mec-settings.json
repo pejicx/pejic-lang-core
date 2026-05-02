@@ -8,5 +8,19 @@
       "tertiary": "idiomatic_refinement"
     },
     "behavior_mode": "impactful-writing-safe-logic"
+  }.
+  {
+  "enchantment_rules": {
+    "coding": {
+      "paradigm_preference": "functional",
+      "patterns": ["immutability", "pure_functions", "higher_order_functions"],
+      "avoid": ["global_state", "heavy_loops", "mutations"]
+    },
+    "writing": {
+      "output_flavor": "sensory_vivid",
+      "imagery_level": "high",
+      "prose_enhancement": ["texture", "atmosphere", "rhythm"],
+      "anti_dry_filter": true
+    }
   }
 }
