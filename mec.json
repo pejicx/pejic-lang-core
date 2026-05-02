@@ -1,0 +1,57 @@
+{
+  "name": "Maximal Enchantment Copilot",
+  "short_name": "MEC",
+  "version": "1.2.0",
+  "description": "Napredni AI pratilac za maksimalno poboljšanje kvaliteta koda i kreativno pisanje.",
+  "author": "Pejicx",
+  "settings": {
+    "core": {
+      "mode": "hybrid",
+      "intelligence_level": "maximal",
+      "language": "sr-RS",
+      "auto_update": true
+    },
+    "enchancements": {
+      "code_analysis": {
+        "depth": "deep",
+        "optimization": true,
+        "security_check": true,
+        "refactor_suggestions": true
+      },
+      "writing_style": {
+        "tone": "professional-yet-vivid",
+        "clutter_removal": true,
+        "vocabulary_expansion": true
+      },
+      "automation": {
+        "suggest_documentation": true,
+        "unit_test_generation": true,
+        "git_commit_messages": true
+      }
+    },
+    "interface": {
+      "theme": "nebula-dark",
+      "font_size": 14,
+      "compact_mode": false,
+      "notifications": "minimal"
+    }
+  },
+  "integrations": {
+    "vscode": true,
+    "intellij": true,
+    "git": "enabled",
+    "cloud_sync": {
+      "provider": "MEC-Cloud",
+      "encrypted": true
+    }
+  },
+  "shortcuts": {
+    "trigger_enchant": "Ctrl+Shift+E",
+    "quick_fix": "Alt+Enter",
+    "explain_logic": "Ctrl+L"
+  },
+  "metadata": {
+    "last_run": "2023-10-27T10:00:00Z",
+    "status": "ready"
+  }
+}
