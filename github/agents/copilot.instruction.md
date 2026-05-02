@@ -93,3 +93,6 @@ copilot
 /add-dir /Users/me/projects/documentation
    - Document any errors encountered as well as the steps taken to work-around them.
 
+applyTo: "**"
+excludeAgent: "code-review"
+
