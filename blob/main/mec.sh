@@ -79,3 +79,14 @@ case "$1" in
         echo "  status  - Check if MEC is ready to go."
         ;;
 esac
+
+# Fast git commit with MEC intelligence
+alias mgc='git add . && git commit -m "$(mec generate-commit)"'
+
+# File translation while preserving the programmer's syntax
+# Upotreba: ./mec.sh translate en-en README.md
+translate_file() {
+    echo "[*] Translating $2 to $1 with context-awareness..."
+    mec translate --target=$1 --file=$2 --save-as="$2.$1"
+    echo "[SUCCESS] Translated version created: $2.$1"
+}
