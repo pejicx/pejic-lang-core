@@ -44,4 +44,13 @@
       "sync_on_reconnect": true
     }
   }
+  check_connection() {
+    ping -c 1 api.pejicx.ai > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo "🌐 MEC Mode: Cloud (Maximum Power)"
+        MEC_CURRENT_ENGINE="cloud"
+    else
+        echo "📶 MEC Mode: Offline Fallback (Lite Engine)"
+        MEC_CURRENT_ENGINE="local"
+    fi
 }
