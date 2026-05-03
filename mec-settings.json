@@ -22,5 +22,26 @@
       "prose_enhancement": ["texture", "atmosphere", "rhythm"],
       "anti_dry_filter": true
     }
+  },
+  {
+  "connectivity": {
+    "cloud": {
+      "endpoint": "https://api.pejicx.ai/v2/enchant",
+      "protocol": "wss",
+      "timeout_ms": 3500,
+      "heartbeat_interval": 15
+    },
+    "reliability": {
+      "retry_strategy": "exponential_backoff",
+      "max_retries": 3,
+      "fallback_trigger_ms": 4000
+    },
+    "offline_mode": {
+      "enabled_fallback": true,
+      "local_engine": "MEC-Lite-GGUF",
+      "model_path": "./models/mec_lite_v1.bin",
+      "memory_mapping": "lazy",
+      "sync_on_reconnect": true
+    }
   }
 }
