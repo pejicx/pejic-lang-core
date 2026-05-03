@@ -60,5 +60,29 @@
     "sparkle_effects": true,
     "highlight_color": "#FFD700",
     "density": "compact"
+  },
+  {
+  "extensions": {
+    "git_nexus": {
+      "enabled": true,
+      "auto_commit_messages": "inteligent",
+      "style": "conventional_commits",
+      "commit_emoji": true,
+      "on_enchant": "suggest_branch_name",
+      "pre_push_check": {
+        "integrity_scan": true,
+        "vulnerability_check": true
+      }
+    },
+    "linguistic_bridge": {
+      "enabled": true,
+      "translation_logic": "contextual_mapping",
+      "supported_modes": ["technical_documentation", "creative_prose", "ui_localization"],
+      "preserve_formatting": true,
+      "dialects": {
+        "primary": "en-US",
+        "secondary": "sr-RS"
+      }
+    }
   }
 }
