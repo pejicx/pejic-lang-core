@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-    MAXIMAL ENCHANTMENT COPILOT (MEC) 
-    Enterprise Configuration Manifest
-    Author: Pejicx AI
--->
-<MecConfiguration version="2.5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<MecConfiguration version="2.5.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="mec.xsd">
     
+    <!-- Identitet unutar korporativne mreže -->
     <CoreSettings>
         <ApplicationId>MEC-ENT-9952</ApplicationId>
         <Environment>Production</Environment>
@@ -13,48 +11,27 @@
         <EnforceSecurityStandards>true</EnforceSecurityStandards>
     </CoreSettings>
 
+    <!-- Parametri za High-Performance AI Engine -->
     <EngineParameters>
         <ModelProfile type="neural-net">
             <Name>Pejicx-Enterprise-V4</Name>
             <PriorityLevel>Critical</PriorityLevel>
             <MaxConcurrency>16</MaxConcurrency>
         </ModelProfile>
-        <Processing>
-            <TimeoutSeconds>30</TimeoutSeconds>
-            <RetryAttempts>3</RetryAttempts>
-            <EnableStreaming>true</EnableStreaming>
-        </Processing>
     </EngineParameters>
 
+    <!-- Pravila specifična za Enterprise jezike (Java, C#) -->
     <EnchantmentRules>
-        <CodeAlchemy enabled="true">
-            <Convention>CleanCode-2023</Convention>
-            <RefactorLevel>Aggressive</RefactorLevel>
-            <AnalysisDepth>GlobalScope</AnalysisDepth>
-        </CodeAlchemy>
-        <LinguisticAscension enabled="true">
-            <TargetLexicon>Professional-Technical</TargetLexicon>
-            <GrammarStrictness>High</GrammarStrictness>
-        </LinguisticAscension>
+        <CodingStandards>
+            <LanguageTarget>Java-17-LTS</LanguageTarget>
+            <Paradigm>Functional-Reactive</Paradigm>
+            <NullSafety>Strict</NullSafety>
+        </CodingStandards>
     </EnchantmentRules>
 
-    <Integrations>
-        <Service endpoint="https://ent-api.pejicx.ai/v2">
-            <AuthType>BearerToken</AuthType>
-            <EncryptionProtocol>TLS_1_3</EncryptionProtocol>
-        </Service>
-        <Logging>
-            <LogToConsole>false</LogToConsole>
-            <LogToFile>true</LogToFile>
-            <Path>/var/log/mec/enterprise.log</Path>
-            <RotationInterval>Daily</RotationInterval>
-        </Logging>
-    </Integrations>
-
     <Metadata>
-        <DeploymentDate>2023-11-01T14:30:00Z</DeploymentDate>
-        <LicenseKey>MEC-PRO-7788-X99Z</LicenseKey>
-        <Status>OPERATIONAL</Status>
+        <LicenseKey>MEC-PRO-ENTERPRISE-UNLIMITED</LicenseKey>
+        <Status>CERTIFIED_OPERATIONAL</Status>
     </Metadata>
 
 </MecConfiguration>
