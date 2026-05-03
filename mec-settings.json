@@ -53,4 +53,39 @@
         echo "📶 MEC Mode: Offline Fallback (Lite Engine)"
         MEC_CURRENT_ENGINE="local"
     fi
+  },
+  {
+  "security": {
+    "data_privacy": {
+      "pii_redaction": {
+        "enabled": true,
+        "strategy": "mask",
+        "redaction_targets": [
+          "email_addresses",
+          "phone_numbers",
+          "credit_card_numbers",
+          "physical_addresses"
+        ],
+        "replacement_token": "[REDACTED_PII]"
+      },
+      "secret_masking": {
+        "enabled": true,
+        "patterns": {
+          "api_keys": "([a-z0-9_]{16,})",
+          "bearer_tokens": "Bearer\\s+[A-Za-z0-9\\-\\._~\\+\\/]+",
+          "private_keys": "-----BEGIN RSA PRIVATE KEY-----"
+        },
+        "replacement_token": "[HIDDEN_SECRET]"
+      }
+    },
+    "logging_policy": {
+      "log_raw_input": false,
+      "log_sanitized_output_only": true,
+      "audit_trail_path": "./logs/mec_security_audit.log"
+    },
+    "compliance": {
+      "gdpr_compliant_mode": true,
+      "zero_retention_policy": true
+    }
+  }
 }
