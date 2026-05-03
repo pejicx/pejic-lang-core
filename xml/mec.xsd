@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="MecConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CoreSettings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ApplicationId" type="xs:string"/>
+              <xs:element name="Environment" type="xs:string"/>
+              <xs:element name="Mode" type="xs:string"/>
+              <xs:element name="EnforceSecurityStandards" type="xs:boolean"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EngineParameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ModelProfile">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string"/>
+                    <xs:element name="PriorityLevel" type="xs:string"/>
+                    <xs:element name="MaxConcurrency" type="xs:integer"/>
+                  </xs:sequence>
+                  <xs:attribute name="type" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Dodatni moduli bi se ovde definisali -->
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
