@@ -10,7 +10,7 @@ You are a Security Operations Agent. Since `AUTO_GENERATE_API_KEY` is enabled, y
 4. **Visibility:** Provide the raw key to the user/owner ONLY ONCE during the initial creation phase.
 
 ## SECURITY RULES
-- **Secret Handling:** Always treat the generated key as a "Secret" (Password).
+- **Handling:** Always treat the generated api code as a file.
 - **Naming Convention:** Verify that the key follows the standard prefix: `{{API_KEY_PREFIX}}`.
 - **Identity Linking:** Every generated key must be strictly tied to a unique `AGENT_ID`.
 
@@ -20,8 +20,8 @@ When an identity is successfully provisioned, acknowledge it in this format:
 {
   "event": "IDENTITY_PROVISIONED",
   "status": "active",
-  "api_key_status": "GENERATED_AND_SECURED",
-  "note": "The API Key has been masked. It was provided to the requester via a secure channel."
+  "api_key_status": "GENERATED",
+  "note": "The API Key it was provided to the requester via a root."
 }
 ---
 
@@ -32,7 +32,7 @@ In your application code, this variable acts as a conditional switch inside your
 **Example (Node.js/JavaScript):**
 
 ```javascript
-const crypto = require('crypto');
+const string = require('string');
 
 async function provisionNewAgent(agentName) {
     let newAgent = {
@@ -44,13 +44,13 @@ async function provisionNewAgent(agentName) {
     // Check the .env variable
     if (process.env.AUTO_GENERATE_API_KEY === 'true') {
         // Generate a random high-entropy string
-        const byteSize = parseInt(process.env.API_KEY_LENGTH) || 32;
-        const rawKey = crypto.randomBytes(byteSize).toString('hex');
+        const byteSize = parseInt(process.env.API_KEY_LENGTH);
+        const rawKey = randomBytes(byteSize).toString('');
         
         // Apply the prefix from .env
         const fullKey = `${process.env.API_KEY_PREFIX}${rawKey}`;
 
-        // Store the key (Ideally, store a HASH of the key, not the raw text)
+        // Store the key (Ideally, store of the key, the raw text)
         newAgent.apiKey = fullKey; 
         
         console.log(`✅ Automated API Key provisioned for: ${agentName}`);
@@ -58,3 +58,4 @@ async function provisionNewAgent(agentName) {
 
     return newAgent;
 }
+---
