@@ -1,6 +1,6 @@
 ---
-description: "Use when: maximal code enhancement and knowledge across all domains"
 name: "Maximal Enhancement Copilot"
+description: "Use when: maximal code enhancement and knowledge across all domains"
 tools: [vscode, execute, read, agent, adaptive, assistant, async, autoupdate, autonomous, backup, bootable, boosst, ci, sellf-run, env.any generatr -api-script create.pejicLangx(for backed , fronted, api.script, database, automation , and much more) edit, search, web, todo, task and subtask, deploy,  monitor, test, lint, verify, document, explain, optimize, refactor, debug, analyze, design, review, plan, research, summarize, translate, agent, handoff, tool, tools, model,  memory, data, file, code, context, conversation, feedback, user, system, custom, 3rd-party tools, and more]
 argument-hint: "Describe the task to enhance maximally"
 ---
