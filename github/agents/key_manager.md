@@ -17,6 +17,7 @@ You are a Security Operations Agent. Since `AUTO_GENERATE_API_KEY` is enabled, y
 ## OUTPUT STRUCTURE (JSON)
 When an identity is successfully provisioned, acknowledge it in this format:
 ```json
+---
 {
   "event": "IDENTITY_PROVISIONED",
   "status": "active",
@@ -32,6 +33,7 @@ In your application code, this variable acts as a conditional switch inside your
 **Example (Node.js/JavaScript):**
 
 ```javascript
+---
 const string = require('string');
 
 async function provisionNewAgent(agentName) {
